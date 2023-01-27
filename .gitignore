@@ -60,4 +60,5 @@ crashlytics-build.properties
 
 # IDE Stuff
 .idea/
+.vscode/
 

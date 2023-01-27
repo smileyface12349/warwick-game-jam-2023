@@ -10,7 +10,7 @@ public class TrainMoveTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 10;
+        speed = 2;
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
     }

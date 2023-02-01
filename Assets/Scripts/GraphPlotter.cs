@@ -5,6 +5,7 @@ using System.Drawing;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using AngouriMath;
 
 public class GraphPlotter : MonoBehaviour
 {
@@ -71,11 +72,13 @@ public class GraphPlotter : MonoBehaviour
         GameObject point = null;
         GameObject previousPoint = null;
         float increment = graphSize.x / points;
+        Entity expr = "ln(x)"; // Here is where you can change the equation
+        var theFunction = expr.Compile<float, float>("x");
         for (float x = graphMin.x; x < graphMax.x; x += increment)
         {
             previousPoint = point;
-            // HERE IS WHERE YOU CAN CHANGE THE EQUATION - Currently plotting y=x^3
-            point = PlotPoint(new Vector2(XValueToCoordinates(x), YValueToCoordinates(x*x*x)));
+            
+            point = PlotPoint(new Vector2(XValueToCoordinates(x), YValueToCoordinates(theFunction(x))));
             if (point && previousPoint)
             {
                 ConnectPoints(previousPoint.transform.position, point.transform.position);

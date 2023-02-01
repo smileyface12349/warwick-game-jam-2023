@@ -72,7 +72,7 @@ public class GraphPlotter : MonoBehaviour
         GameObject point = null;
         GameObject previousPoint = null;
         float increment = graphSize.x / points;
-        Entity expr = "ln(x)"; // Here is where you can change the equation
+        Entity expr = "1/x"; // Here is where you can change the equation
         var theFunction = expr.Compile<float, float>("x");
         for (float x = graphMin.x; x < graphMax.x; x += increment)
         {

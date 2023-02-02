@@ -714,11 +714,10 @@ MonoBehaviour:
   waypoints:
   - {x: 0, y: 0}
   - {x: 5, y: 5}
-  - {x: 6, y: 10}
-  - {x: 15, y: 12}
-  - {x: 20, y: 13}
-  - {x: 0, y: 25}
-  currentPoint: {x: 0, y: 0}
+  - {x: -2, y: 10}
+  - {x: 0, y: 2}
+  - {x: 0, y: 13}
+  - {x: 0, y: 0}
   position: {x: 0, y: 0}
   speed: 3
   pointIndex: 0

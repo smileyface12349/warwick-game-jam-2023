@@ -16,11 +16,14 @@ public class GraphHandler : MonoBehaviour
     private float pixelsPerY;
     private List<List<Vector3>> pointsList;
     private Func<float, float> theFunction;
+    private Vector2 coordinatesBottomLeft;
     
     // Start is called before the first frame update
     private void Start()
     {
         // TODO: Retrieve size of graph and draw lines accordingly
+        
+        coordinatesBottomLeft = gameObject.transform.position;
         
         ChangeEquation();
         RefreshGraph();
@@ -33,21 +36,14 @@ public class GraphHandler : MonoBehaviour
         
     }
 
-    private List<List<Vector3>> CheckContinuity(List<Vector3> allPoints)
-    {
-        List<List<Vector3>> pointsOutput = new List<List<Vector3>>();
-        pointsOutput.Add(allPoints);
-        return pointsOutput;
-    }
-
     private float GetXCoordinate(float x)
     {
-        return -200 + 400 * ((x - bottomLeft.x) / (topRight.x - bottomLeft.x));
+        return coordinatesBottomLeft.x - 200 + 400 * ((x - bottomLeft.x) / (topRight.x - bottomLeft.x));
     }
     
     private float GetYCoordinate(float y)
     {
-        return -200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
+        return coordinatesBottomLeft.y - 200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
     }
 
     private void ChangeEquation()
@@ -56,25 +52,76 @@ public class GraphHandler : MonoBehaviour
         theFunction = expr.Compile<float, float>("x");
     }
 
-    private List<Vector3> DeterminePoints()
+    private List<List<Vector3>> DeterminePoints()
     {
-        List<Vector3> points = new List<Vector3>();
         float increment = (topRight.x - bottomLeft.x) / nPoints;
-        for (float x = bottomLeft.x; x < topRight.x; x += increment)
+        List<List<Vector3>> points = new List<List<Vector3>>();
+        List<Vector3> currentPoints = new List<Vector3>();
+        Vector3 previousPoint = new Vector3(-1000, -1000);
+        
+        for (float x = bottomLeft.x; x < topRight.x+increment; x += increment)
         {
+            bool valid = true;
+            float newX = -1000;
+            float newY = -1000;
             float y = theFunction(x);
-            // TODO: Simple boundary check here - divide into separate lists
-            // TODO: Probably worth checking continuity here as well
-            points.Add(new Vector3(GetXCoordinate(x), GetYCoordinate(y)));
-            Debug.Log(GetXCoordinate(x) + ", " + GetYCoordinate(y));
+            
+            // Bounds Checks
+            Debug.Log("Checking bounds for (" + x + ", " + y + ")");
+            if (y > topRight.y) {  // ABOVE
+                Debug.Log("It's too high! " + topRight.y);
+                valid = false;
+                // Check if the previous point is valid - if not, we don't need to do anything
+                Debug.Log("Previous y: " + previousPoint.y);
+                if (previousPoint.y != -1000 && previousPoint.y <= topRight.y) {
+                    // This is the first point to step out of bounds
+                    // Want to add a point on the boundary
+                    // To make it easier, we will add a point that is pretty close to where it should be, using linear interpolation
+                    newY = topRight.y;
+                    newX = previousPoint.x + (x - previousPoint.x) * ((newY - previousPoint.y) / (y - previousPoint.y));
+                    Debug.Log(x);
+                    Debug.Log(newX);
+                }
+            }
+            else if (y < bottomLeft.y) {  // BELOW
+                valid = false;
+                if (previousPoint.x != -1000 && previousPoint.y >= bottomLeft.y) {
+                    // (see comments above)
+                    // I split this into separate things as I thought it was a good idea but in hindsight it was stupid
+                    newY = bottomLeft.y;
+                    newX = previousPoint.x + (x - previousPoint.x) * ((newY - previousPoint.y) / (y - previousPoint.y));
+                }
+            }
+            
+            float plotX = x;
+            float plotY = y;
+            
+            // TODO: Countinuity check
+            if (!valid && newX != -1000 && newY != -1000)
+            {
+                plotX = newX;
+                plotY = newY;
+                valid = true;
+            }
+            
+            Vector3 point = new Vector3(GetXCoordinate(plotX), GetYCoordinate(plotY));
+                
+            if (valid) {
+                currentPoints.Add(point);
+                Debug.Log(point);
+            }
+            
+            previousPoint = new Vector2(plotX, plotY);
+            
         }
-        Debug.Log(points);
+        Debug.Log(currentPoints.ToArray().Length);
+        points.Add(currentPoints);
         return points;
     }
 
     private void RefreshGraph()
     {
-        pointsList = CheckContinuity(DeterminePoints());
+        pointsList = DeterminePoints();
         RenderGraph();
     }
 
@@ -85,9 +132,9 @@ public class GraphHandler : MonoBehaviour
             GameObject line = new GameObject("Line");
             line.transform.position = gameObject.transform.position;
             LineRenderer l = line.AddComponent<LineRenderer>();
-            l.startWidth = 1f;
-            l.endWidth = 1f;
-            l.useWorldSpace = false;
+            l.startWidth = 5f;
+            l.endWidth = 5f;
+            l.useWorldSpace = true;
             l.startColor = new Color(1, 0, 0);
             l.endColor = l.startColor;
             Vector3[] positions = pointsList[i].ToArray();

@@ -29,7 +29,10 @@ public class FollowWaypoints : MonoBehaviour
                 pointIndex++;
             }
 
-            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, (Vector2.SignedAngle((target - position), new Vector2(1, 0))));
+            // rotate towards the current target
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle((target - position), new Vector2(1, 0)));
+
+            // move towards the target
             transform.position = Vector2.MoveTowards(transform.position, target, step);
         }
     }

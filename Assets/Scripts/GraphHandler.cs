@@ -11,6 +11,7 @@ public class GraphHandler : MonoBehaviour
     public Vector2 topRight;
     public String equation;
     public int nPoints = 100;
+    public Material trackMaterial;
 
     private float pixelsPerX;
     private float pixelsPerY;
@@ -177,11 +178,13 @@ public class GraphHandler : MonoBehaviour
             GameObject line = new GameObject("Line");
             line.transform.position = gameObject.transform.position;
             LineRenderer l = line.AddComponent<LineRenderer>();
-            l.startWidth = 5f;
-            l.endWidth = 5f;
+            l.startWidth = 25f;
+            l.endWidth = 25f;
             l.useWorldSpace = true;
             l.startColor = new Color(1, 0, 0);
             l.endColor = l.startColor;
+            l.material = trackMaterial;
+            l.textureMode = LineTextureMode.Tile;
             Vector3[] positions = pointsList[i].ToArray();
             l.positionCount = positions.Length;
             l.SetPositions(positions);

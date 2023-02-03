@@ -802,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bottomLeft: {x: -4, y: -4}
   topRight: {x: 4, y: 4}
-  equation: 1/x
+  equation: tan(x)
   nPoints: 100
 --- !u!4 &1541701431
 Transform:

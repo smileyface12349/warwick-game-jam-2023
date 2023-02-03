@@ -30,7 +30,10 @@ public class FollowWaypoints : MonoBehaviour
             }
 
             // rotate towards the current target
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle((target - position), new Vector2(1, 0)));
+            // gameObject.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle((target - position), new Vector2(1, 0)));
+            
+            // (above doesn't seem to work - see if this works instead, then delete above line)
+            gameObject.transform.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle((target - position), new Vector2(1, 0)));
 
             // move towards the target
             transform.position = Vector2.MoveTowards(transform.position, target, step);

@@ -266,8 +266,8 @@ public class GraphHandler : MonoBehaviour
             line.transform.SetParent(gameObject.transform);
             line.transform.position = gameObject.transform.position;
             LineRenderer l = line.AddComponent<LineRenderer>();
-            l.startWidth = 5f;
-            l.endWidth = 5f;
+            l.startWidth = 50f;
+            l.endWidth = 50f;
             l.useWorldSpace = true;
             l.startColor = new Color(1, 0, 0);
             l.endColor = l.startColor;

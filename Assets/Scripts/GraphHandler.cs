@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AngouriMath;
+using TMPro;
 using UnityEngine;
 
 public class GraphHandler : MonoBehaviour
@@ -12,6 +13,8 @@ public class GraphHandler : MonoBehaviour
     public String equation;
     public int nPoints = 100;
     public Material trackMaterial;
+    public GameObject equationDisplay;
+    public GameObject errorDisplay;
 
     private float pixelsPerX;
     private float pixelsPerY;
@@ -19,6 +22,8 @@ public class GraphHandler : MonoBehaviour
     private Func<float, float> theFunction;
     private Vector2 coordinatesBottomLeft;
     private static float SILLY_NUMBER = -100000f;
+    private TextMeshProUGUI equationDisplayText;
+    private TextMeshProUGUI errorText;
     
     // Start is called before the first frame update
     private void Start()
@@ -26,9 +31,10 @@ public class GraphHandler : MonoBehaviour
         // TODO: Retrieve size of graph and draw lines accordingly
         
         coordinatesBottomLeft = gameObject.transform.position;
+        equationDisplayText = equationDisplay.GetComponent<TextMeshProUGUI>();
+        errorText = errorDisplay.GetComponent<TextMeshProUGUI>();
         
-        ChangeEquation();
-        RefreshGraph();
+        UpdateGraph();
     }
 
     // Update is called once per frame
@@ -36,6 +42,69 @@ public class GraphHandler : MonoBehaviour
     {
         // TODO: Take equation in input box and plot on graph
         
+        bool modified = false;
+        
+        foreach (char c in Input.inputString)
+        {
+            switch (c)
+            {
+                case '\b': // Backspace
+                    if (equation.Length > 0)
+                    {
+                        equation = equation.Substring(0, equation.Length - 1);
+                        modified = true;
+                    }
+                    break;
+                case '\n': // Enter
+                case '\r': // Return
+                    break; // Ignore this keypress
+                default:
+                    equation += c;
+                    modified = true;
+                    break;
+            }
+        }
+        
+        // Control wipes the current input
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            equation = "";
+            modified = true;
+        }
+
+        if (modified)
+        {
+            UpdateGraph();
+        }
+    }
+
+    /**
+     * - Displays the equation
+     * - Re-compiles the equation
+     * - Destroys the old graph
+     * - Plots a new one
+     */
+    private void UpdateGraph()
+    {
+        DisplayEquation();
+        bool valid = true;
+        try
+        {
+            ChangeEquation();
+        }
+        catch (Exception e)
+        {
+            valid = false;
+        }
+        if (valid)
+        {
+            RefreshGraph();
+            errorText.text = "";
+        }
+        else
+        {
+            errorText.text = "Invalid Equation";
+        }
     }
 
     private float GetXCoordinate(float x)
@@ -46,6 +115,11 @@ public class GraphHandler : MonoBehaviour
     private float GetYCoordinate(float y)
     {
         return coordinatesBottomLeft.y - 200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
+    }
+
+    private void DisplayEquation()
+    {
+        equationDisplayText.text = "y = " + equation;
     }
 
     private void ChangeEquation()
@@ -165,8 +239,21 @@ public class GraphHandler : MonoBehaviour
         return points;
     }
 
+    private void DestroyGraph()
+    {
+        int MAX = 1000;
+        int c = 0;
+        Transform transform = gameObject.transform;
+        while (transform.childCount > 0 && c < MAX)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            c++;
+        }
+    }
+
     private void RefreshGraph()
     {
+        DestroyGraph();
         pointsList = DeterminePoints();
         RenderGraph();
     }
@@ -176,10 +263,11 @@ public class GraphHandler : MonoBehaviour
         for (int i = 0; i < pointsList.Count; i++)
         {
             GameObject line = new GameObject("Line");
+            line.transform.SetParent(gameObject.transform);
             line.transform.position = gameObject.transform.position;
             LineRenderer l = line.AddComponent<LineRenderer>();
-            l.startWidth = 25f;
-            l.endWidth = 25f;
+            l.startWidth = 5f;
+            l.endWidth = 5f;
             l.useWorldSpace = true;
             l.startColor = new Color(1, 0, 0);
             l.endColor = l.startColor;

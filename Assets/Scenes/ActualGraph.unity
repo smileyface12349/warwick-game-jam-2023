@@ -802,9 +802,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bottomLeft: {x: -4, y: -4}
   topRight: {x: 4, y: 4}
-  equation: x
+  equation: 0
   nPoints: 100
   trackMaterial: {fileID: 2100000, guid: e1a4c19eb3a2ff140b4788bd199cccdc, type: 2}
+  equationDisplay: {fileID: 607570548}
+  errorDisplay: {fileID: 956822429}
 --- !u!4 &1541701431
 Transform:
   m_ObjectHideFlags: 0

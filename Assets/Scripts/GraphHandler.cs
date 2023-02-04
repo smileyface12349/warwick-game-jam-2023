@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AngouriMath;
+using TMPro;
 using UnityEngine;
 
 public class GraphHandler : MonoBehaviour
@@ -11,19 +12,29 @@ public class GraphHandler : MonoBehaviour
     public Vector2 topRight;
     public String equation;
     public int nPoints = 100;
+    public Material trackMaterial;
+    public GameObject equationDisplay;
+    public GameObject errorDisplay;
 
     private float pixelsPerX;
     private float pixelsPerY;
     private List<List<Vector3>> pointsList;
     private Func<float, float> theFunction;
+    private Vector2 coordinatesBottomLeft;
+    private static float SILLY_NUMBER = -100000f;
+    private TextMeshProUGUI equationDisplayText;
+    private TextMeshProUGUI errorText;
     
     // Start is called before the first frame update
     private void Start()
     {
         // TODO: Retrieve size of graph and draw lines accordingly
         
-        ChangeEquation();
-        RefreshGraph();
+        coordinatesBottomLeft = gameObject.transform.position;
+        equationDisplayText = equationDisplay.GetComponent<TextMeshProUGUI>();
+        errorText = errorDisplay.GetComponent<TextMeshProUGUI>();
+        
+        UpdateGraph();
     }
 
     // Update is called once per frame
@@ -31,23 +42,84 @@ public class GraphHandler : MonoBehaviour
     {
         // TODO: Take equation in input box and plot on graph
         
+        bool modified = false;
+        
+        foreach (char c in Input.inputString)
+        {
+            switch (c)
+            {
+                case '\b': // Backspace
+                    if (equation.Length > 0)
+                    {
+                        equation = equation.Substring(0, equation.Length - 1);
+                        modified = true;
+                    }
+                    break;
+                case '\n': // Enter
+                case '\r': // Return
+                    break; // Ignore this keypress
+                default:
+                    equation += c;
+                    modified = true;
+                    break;
+            }
+        }
+        
+        // Control wipes the current input
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            equation = "";
+            modified = true;
+        }
+
+        if (modified)
+        {
+            UpdateGraph();
+        }
     }
 
-    private List<List<Vector3>> CheckContinuity(List<Vector3> allPoints)
+    /**
+     * - Displays the equation
+     * - Re-compiles the equation
+     * - Destroys the old graph
+     * - Plots a new one
+     */
+    private void UpdateGraph()
     {
-        List<List<Vector3>> pointsOutput = new List<List<Vector3>>();
-        pointsOutput.Add(allPoints);
-        return pointsOutput;
+        DisplayEquation();
+        bool valid = true;
+        try
+        {
+            ChangeEquation();
+        }
+        catch (Exception e)
+        {
+            valid = false;
+        }
+        if (valid)
+        {
+            RefreshGraph();
+            errorText.text = "";
+        }
+        else
+        {
+            errorText.text = "Invalid Equation";
+        }
     }
 
     private float GetXCoordinate(float x)
     {
-        return -200 + 400 * ((x - bottomLeft.x) / (topRight.x - bottomLeft.x));
+        return coordinatesBottomLeft.x - 200 + 400 * ((x - bottomLeft.x) / (topRight.x - bottomLeft.x));
     }
     
     private float GetYCoordinate(float y)
     {
-        return -200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
+        return coordinatesBottomLeft.y - 200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
+    }
+
+    private void DisplayEquation()
+    {
+        equationDisplayText.text = "y = " + equation;
     }
 
     private void ChangeEquation()
@@ -56,25 +128,133 @@ public class GraphHandler : MonoBehaviour
         theFunction = expr.Compile<float, float>("x");
     }
 
-    private List<Vector3> DeterminePoints()
+    private float InterpolatePoint(float y, float x1, float x2, float y1, float y2)
     {
-        List<Vector3> points = new List<Vector3>();
+        return x1 + (x2 - x1) * ((y - y1) / (y2 - y1));
+    }
+
+    private List<List<Vector3>> DeterminePoints()
+    {
         float increment = (topRight.x - bottomLeft.x) / nPoints;
-        for (float x = bottomLeft.x; x < topRight.x; x += increment)
+        List<List<Vector3>> points = new List<List<Vector3>>();
+        List<Vector3> currentPoints = new List<Vector3>();
+        Vector3 previousPoint = new Vector3(SILLY_NUMBER, SILLY_NUMBER);
+        
+        for (float x = bottomLeft.x; x < topRight.x+increment; x += increment)
         {
+            bool valid = true;
+            bool startNew = false;
+            float newX = SILLY_NUMBER;
+            float newY = SILLY_NUMBER;
             float y = theFunction(x);
-            // TODO: Simple boundary check here - divide into separate lists
-            // TODO: Probably worth checking continuity here as well
-            points.Add(new Vector3(GetXCoordinate(x), GetYCoordinate(y)));
-            Debug.Log(GetXCoordinate(x) + ", " + GetYCoordinate(y));
+            
+            Debug.Log("Considering point (" + x + ", " + y + ")");
+            
+            // Check for OUT OF BOUNDS
+            if (y > topRight.y) {  // ABOVE
+                Debug.Log("It's too high! " + topRight.y);
+                valid = false;
+                // Check if the previous point is valid - if not, we don't need to do anything
+                Debug.Log("Previous y: " + previousPoint.y);
+                if (previousPoint.y != SILLY_NUMBER && previousPoint.y < topRight.y && previousPoint.y > bottomLeft.y) {
+                    // This is the first point to step out of bounds
+                    // Want to add a point on the boundary
+                    // To make it easier, we will add a point that is pretty close to where it should be, using linear interpolation
+                    newY = topRight.y;
+                    newX = InterpolatePoint(newY, previousPoint.x, x, previousPoint.y, y);
+                    Debug.Log(x);
+                    Debug.Log(newX);
+                    startNew = true;
+                }
+            }
+            else if (y < bottomLeft.y) {  // BELOW
+                valid = false;
+                if (previousPoint.x != SILLY_NUMBER && previousPoint.y > bottomLeft.y && previousPoint.y < topRight.y) {
+                    // (see comments above)
+                    // I split this into separate things as I thought it was a good idea but in hindsight it was stupid
+                    newY = bottomLeft.y;
+                    newX = InterpolatePoint(newY, previousPoint.x, x, previousPoint.y, y);
+                    startNew = true;
+                }
+            }
+            // Bounds check passed - Now check if it is the first point to step into bounds
+            else
+            {
+                if (previousPoint.y != SILLY_NUMBER && (previousPoint.y > topRight.y || previousPoint.y != SILLY_NUMBER && previousPoint.y < bottomLeft.y))
+                {
+                    // Previous point was out of bounds
+                    // TODO: Could differentiate here to determine more reliably
+                    // Determine whether we have come in from the bottom or the top
+                    if (y >= bottomLeft.y + (topRight.y - bottomLeft.y) / 2)
+                    {
+                        newY = topRight.y;
+                        Debug.Log("Coming in from the top! New Y: " + newY);
+                    }
+                    else
+                    {
+                        Debug.Log("Coming in from the bottom!");
+                        newY = bottomLeft.y;
+                    }
+                    newX = InterpolatePoint(newY, previousPoint.x, x, previousPoint.y, y);
+                    Debug.Log("Adding the point: (" + newX + ", " + newY + ")");
+                    currentPoints.Add(new Vector3(GetXCoordinate(newX), GetYCoordinate(newY)));
+                }
+            }
+            
+            // TODO: Continuity check
+            
+            float plotX = x;
+            float plotY = y;
+
+            if (!valid && newX != SILLY_NUMBER && newY != SILLY_NUMBER)
+            {
+                plotX = newX;
+                plotY = newY;
+                valid = true;
+            }
+            
+            Vector3 point = new Vector3(GetXCoordinate(plotX), GetYCoordinate(plotY));
+                
+            if (valid) {
+                currentPoints.Add(point);
+                Debug.Log("Adding: " + point);
+            }
+
+            if (startNew)
+            {
+                points.Add(currentPoints);
+                currentPoints = new List<Vector3>();
+            }
+            
+            previousPoint = new Vector2(plotX, plotY);
+            
         }
-        Debug.Log(points);
+
+        Vector3[] currentPointsArray = currentPoints.ToArray();
+        if (currentPointsArray.Length > 0)
+        {
+            points.Add(currentPoints);
+        }
+        
         return points;
+    }
+
+    private void DestroyGraph()
+    {
+        int MAX = 1000;
+        int c = 0;
+        Transform transform = gameObject.transform;
+        while (transform.childCount > 0 && c < MAX)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            c++;
+        }
     }
 
     private void RefreshGraph()
     {
-        pointsList = CheckContinuity(DeterminePoints());
+        DestroyGraph();
+        pointsList = DeterminePoints();
         RenderGraph();
     }
 
@@ -83,13 +263,16 @@ public class GraphHandler : MonoBehaviour
         for (int i = 0; i < pointsList.Count; i++)
         {
             GameObject line = new GameObject("Line");
+            line.transform.SetParent(gameObject.transform);
             line.transform.position = gameObject.transform.position;
             LineRenderer l = line.AddComponent<LineRenderer>();
-            l.startWidth = 1f;
-            l.endWidth = 1f;
-            l.useWorldSpace = false;
+            l.startWidth = 50f;
+            l.endWidth = 50f;
+            l.useWorldSpace = true;
             l.startColor = new Color(1, 0, 0);
             l.endColor = l.startColor;
+            l.material = trackMaterial;
+            l.textureMode = LineTextureMode.Tile;
             Vector3[] positions = pointsList[i].ToArray();
             l.positionCount = positions.Length;
             l.SetPositions(positions);

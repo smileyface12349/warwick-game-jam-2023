@@ -2305,6 +2305,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 490866242}
+    - target: {fileID: 1137894086776068162, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d7b075d845cd60dbbb2faff581a06f3f, type: 3}
     - target: {fileID: 8602702441169607187, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_Name
       value: Graph

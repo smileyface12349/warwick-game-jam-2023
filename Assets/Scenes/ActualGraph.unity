@@ -207,6 +207,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &732585953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137894086272449943, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
+  m_PrefabInstance: {fileID: 1137894087805698725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234402128
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,11 +385,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
---- !u!1 &1137894087805698726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8602702441169607187, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
-  m_PrefabInstance: {fileID: 1137894087805698725}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137894087805698727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1137894086776068160, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56a9fe90c7416d3eb74958dcb82d497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 1137894087805698726}
+  graph: {fileID: 732585953}
   smallHor: {fileID: 4591527844394349931, guid: 3fac21715f59139e49af0e2a1c9e013a, type: 3}
   bigHor: {fileID: 2303854529890923481, guid: 2fd674df77f8524c4914bf6e970a1805, type: 3}
   smallVer: {fileID: 1181805009703081902, guid: cace7c3498a69be7497694d7b90192f8, type: 3}

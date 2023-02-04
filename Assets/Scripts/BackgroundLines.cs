@@ -51,8 +51,8 @@ public class BackgroundLines : MonoBehaviour
         //Access graph plotter
         gp = graph.GetComponent<GraphHandler>();
         //Get graph's coordinates of corners
-        graphWidth   = gp.GetXCoordinate(gp.topRight.x) - gp.GetXCoordinate(gp.bottomLeft.x);
-        graphHeight  = gp.GetYCoordinate(gp.topRight.y) - gp.GetYCoordinate(gp.bottomLeft.y);
+        graphWidth   = gp.topRight.x - gp.bottomLeft.x;
+        graphHeight  = gp.topRight.y - gp.bottomLeft.y;
 
         //Log
         Debug.Log(canvasWidth);
@@ -64,23 +64,23 @@ public class BackgroundLines : MonoBehaviour
         spacingX = canvasWidth / graphWidth;
         spacingY = canvasHeight / graphHeight;
 
-        //Make lines that pass through origin
-        Instantiate(bigHor, new Vector2(0, 0 + 100), Quaternion.identity);    
-        Instantiate(bigVer, new Vector2(0, 0 + 100), Quaternion.identity);    
-
-        //Summon smakll x lines
+        //Summon small x lines
         for (float i = 0; i <= canvasTopRig.x; i = i + spacingX) {
             if (i != 0) {
                 Instantiate(smallVer, new Vector2(i - 200, 0 + 100), Quaternion.identity);    
             }
         }
 
-        //Summon smakll y lines
+        //Summon small y lines
         for (float i = 100; i <= canvasTopRig.y; i = i + spacingY) {
             if (i != 0) {
                 Instantiate(smallHor, new Vector2(0, i - 200), Quaternion.identity);    
             }
         }
+        
+        //Make lines that pass through origin
+        Instantiate(bigHor, new Vector2(0, 0 + 100), Quaternion.identity);    
+        Instantiate(bigVer, new Vector2(0, 0 + 100), Quaternion.identity);    
     }
 
     // Update is called once per frame

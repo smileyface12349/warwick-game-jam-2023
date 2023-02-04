@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 1137894086776068163}
   - component: {fileID: 1137894086776068173}
   - component: {fileID: 1137894086776068162}
+  - component: {fileID: 3062084733673600684}
   m_Layer: 0
   m_Name: GraphBackground
   m_TagString: Untagged
@@ -276,6 +277,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3062084733673600684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137894086776068160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56a9fe90c7416d3eb74958dcb82d497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1137894086272449943}
+  smallHor: {fileID: 4591527844394349931, guid: 3fac21715f59139e49af0e2a1c9e013a, type: 3}
+  bigHor: {fileID: 2303854529890923481, guid: 2fd674df77f8524c4914bf6e970a1805, type: 3}
+  smallVer: {fileID: 1181805009703081902, guid: cace7c3498a69be7497694d7b90192f8, type: 3}
+  bigVer: {fileID: 4871749472340724853, guid: 8e4f0368d490d015eae2a1d7625a6333, type: 3}
 --- !u!1 &1137894087923003704
 GameObject:
   m_ObjectHideFlags: 0

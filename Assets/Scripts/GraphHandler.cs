@@ -87,12 +87,12 @@ public class GraphHandler : MonoBehaviour
         }
     }
 
-    private float GetXCoordinate(float x)
+    public float GetXCoordinate(float x)
     {
         return coordinatesBottomLeft.x - 200 + 400 * ((x - bottomLeft.x) / (topRight.x - bottomLeft.x));
     }
     
-    private float GetYCoordinate(float y)
+    public float GetYCoordinate(float y)
     {
         return coordinatesBottomLeft.y - 200 + 400 * ((y - bottomLeft.y) / (topRight.y - bottomLeft.y));
     }

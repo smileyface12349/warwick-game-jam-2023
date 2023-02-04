@@ -40,13 +40,13 @@ public class BackgroundLines : MonoBehaviour
         spacingX = canvasWidth / graphWidth;
         spacingY = canvasHeight / graphHeight;
 
-        centreX = canvasBotLef.x - (spacingX * graph.GetComponent<GraphPlotter>().coordsBottomLeft.x);
-        centreY = canvasBotLef.y - (spacingY * graph.GetComponent<GraphPlotter>().coordsBottomLeft.y);
+        //centreX = canvasBotLef.x - (spacingX * graph.GetComponent<GraphPlotter>().coordsBottomLeft.x);
+        //centreY = canvasBotLef.y - (spacingY * graph.GetComponent<GraphPlotter>().coordsBottomLeft.y);
 
-        centreLineX = new GameObject("centreLineX");
-        xSR = centreLineX.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        sprite = Sprite.Create(texture, new Rect(0, 0, 32, 32), new Vector2(16,16));
-        spriteRenderer.sprite = sprite;
+        //centreLineX = new GameObject("centreLineX");
+        //xSR = centreLineX.AddComponent<SpriteRenderer>() as SpriteRenderer;
+        //sprite = Sprite.Create(texture, new Rect(0, 0, 32, 32), new Vector2(16,16));
+        //spriteRenderer.sprite = sprite;
 
         // for (float i = canvasBotLef.x; i <= canvasTopRig.x; i = i + spacingX) {
         //     

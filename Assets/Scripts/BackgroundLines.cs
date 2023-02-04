@@ -66,16 +66,12 @@ public class BackgroundLines : MonoBehaviour
 
         //Summon small x lines
         for (float i = 0; i <= canvasTopRig.x; i = i + spacingX) {
-            if (i != 0) {
-                Instantiate(smallVer, new Vector2(i - 200, 0 + 100), Quaternion.identity);    
-            }
+            Instantiate(smallVer, new Vector2(i - 200, 0 + 100), Quaternion.identity);    
         }
 
         //Summon small y lines
         for (float i = 100; i <= canvasTopRig.y; i = i + spacingY) {
-            if (i != 0) {
-                Instantiate(smallHor, new Vector2(0, i - 200), Quaternion.identity);    
-            }
+            Instantiate(smallHor, new Vector2(0, i - 200), Quaternion.identity);    
         }
         
         //Make lines that pass through origin

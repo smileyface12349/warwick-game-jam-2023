@@ -6,9 +6,9 @@ public class BackgroundLines : MonoBehaviour
 {
     public  GameObject graph;
     private RectTransform rect;
+    private Vector2 containerSize;
     private Vector2 canvasBotLef;
     private Vector2 canvasTopRig;
-    private Vector2 containerSize;
 
     private float canvasWidth;
     private float canvasHeight;
@@ -21,36 +21,66 @@ public class BackgroundLines : MonoBehaviour
     private int smallLineWidth;
     private int bigLineWidth;
 
+    private float centreX;
+    private float centreY;
+
+    public  GameObject smallHor;
+    public  GameObject bigHor;
+    public  GameObject smallVer;
+    public  GameObject bigVer;
+    private GraphHandler gp;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Access RectTransform
         rect = gameObject.GetComponent<RectTransform>();
+        //Get size of GraphBackground
         containerSize = rect.sizeDelta;
-        canvasBotLef = gameObject.transform.position;
+        //Bottom left coord is just the possiont
+        canvasBotLef = rect.position;
+        //Top right is bottom left plus size
         canvasTopRig = (Vector2) canvasBotLef + containerSize;
+        //Log
         Debug.Log(canvasBotLef);
         Debug.Log(canvasTopRig);
 
-        canvasWidth  = canvasTopRig.x - canvasBotLef.x;
-        canvasHeight = canvasTopRig.y - canvasBotLef.y;
+        canvasWidth  = containerSize.x;
+        canvasHeight = containerSize.y;
 
-        graphWidth   = graph.GetComponent<GraphPlotter>().coordsTopRight.x - graph.GetComponent<GraphPlotter>().coordsBottomLeft.x;
-        graphHeight  = graph.GetComponent<GraphPlotter>().coordsTopRight.y - graph.GetComponent<GraphPlotter>().coordsBottomLeft.y;
+        //Access graph plotter
+        gp = graph.GetComponent<GraphHandler>();
+        //Get graph's coordinates of corners
+        graphWidth   = gp.GetXCoordinate(gp.topRight.x) - gp.GetXCoordinate(gp.bottomLeft.x);
+        graphHeight  = gp.GetYCoordinate(gp.topRight.y) - gp.GetYCoordinate(gp.bottomLeft.y);
 
+        //Log
+        Debug.Log(canvasWidth);
+        Debug.Log(canvasHeight);
+        Debug.Log(graphWidth);
+        Debug.Log(graphHeight);
+
+        //Determine space between lines
         spacingX = canvasWidth / graphWidth;
         spacingY = canvasHeight / graphHeight;
 
-        //centreX = canvasBotLef.x - (spacingX * graph.GetComponent<GraphPlotter>().coordsBottomLeft.x);
-        //centreY = canvasBotLef.y - (spacingY * graph.GetComponent<GraphPlotter>().coordsBottomLeft.y);
+        //Make lines that pass through origin
+        Instantiate(bigHor, new Vector2(0, 0 + 100), Quaternion.identity);    
+        Instantiate(bigVer, new Vector2(0, 0 + 100), Quaternion.identity);    
 
-        //centreLineX = new GameObject("centreLineX");
-        //xSR = centreLineX.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        //sprite = Sprite.Create(texture, new Rect(0, 0, 32, 32), new Vector2(16,16));
-        //spriteRenderer.sprite = sprite;
+        //Summon smakll x lines
+        for (float i = 0; i <= canvasTopRig.x; i = i + spacingX) {
+            if (i != 0) {
+                Instantiate(smallVer, new Vector2(i - 200, 0 + 100), Quaternion.identity);    
+            }
+        }
 
-        // for (float i = canvasBotLef.x; i <= canvasTopRig.x; i = i + spacingX) {
-        //     
-        // }
+        //Summon smakll y lines
+        for (float i = 100; i <= canvasTopRig.y; i = i + spacingY) {
+            if (i != 0) {
+                Instantiate(smallHor, new Vector2(0, i - 200), Quaternion.identity);    
+            }
+        }
     }
 
     // Update is called once per frame

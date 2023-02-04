@@ -57,12 +57,12 @@ public class GraphPlotter : MonoBehaviour
         return point;
     }
 
-    private float XValueToCoordinates(float x)
+    public float XValueToCoordinates(float x)
     {
         return coordsBottomLeft.x + containerSize.x / graphSize.x * (x - graphMin.x);
     }
 
-    private float YValueToCoordinates(float y)
+    public float YValueToCoordinates(float y)
     {
         return coordsBottomLeft.y + containerSize.y / graphSize.y * (y - graphMin.y);
     }

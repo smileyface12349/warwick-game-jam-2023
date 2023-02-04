@@ -55,10 +55,10 @@ public class BackgroundLines : MonoBehaviour
         graphHeight  = gp.topRight.y - gp.bottomLeft.y;
 
         //Log
-        Debug.Log(canvasWidth);
-        Debug.Log(canvasHeight);
-        Debug.Log(graphWidth);
-        Debug.Log(graphHeight);
+        // Debug.Log(canvasWidth);
+        // Debug.Log(canvasHeight);
+        // Debug.Log(graphWidth);
+        // Debug.Log(graphHeight);
 
         //Determine space between lines
         spacingX = canvasWidth / graphWidth;

@@ -5,10 +5,13 @@ using UnityEngine;
 public class FollowWaypoints : MonoBehaviour
 {
     public List<Vector3> waypoints;
-    public float speed;
     public GameObject levelController;
     public int width = 128;
+    public float typicalSpeed;
+    public float textSpeed;
+    public float textThresholdX;
     
+    private float speed;
     private int pointIndex;
     private ExecuteLevel executeLevel;
     private Vector3 directionVector;
@@ -16,6 +19,7 @@ public class FollowWaypoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = textSpeed;
         executeLevel = levelController.GetComponent<ExecuteLevel>();
         pointIndex = 0;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
@@ -24,6 +28,13 @@ public class FollowWaypoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update speed
+        if (gameObject.transform.position.x <= textThresholdX) {
+            speed = textSpeed;
+        } else {
+            speed = typicalSpeed;
+        }
+    
         // Check if we've run out of waypoints
         if (waypoints != null && pointIndex >= waypoints.Count) {
             // Ask for some more

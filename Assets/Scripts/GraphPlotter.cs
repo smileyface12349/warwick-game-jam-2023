@@ -12,8 +12,8 @@ public class GraphPlotter : MonoBehaviour
 
     public GameObject graphContainer;
     private RectTransform rect;
-    private Vector2 coordsBottomLeft;
-    private Vector2 coordsTopRight;
+    public Vector2 coordsBottomLeft;
+    public Vector2 coordsTopRight;
     public Vector2 graphMin;
     public Vector2 graphMax;
     private Vector2 graphSize;

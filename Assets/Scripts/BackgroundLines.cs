@@ -28,7 +28,7 @@ public class BackgroundLines : MonoBehaviour
     public  GameObject bigHor;
     public  GameObject smallVer;
     public  GameObject bigVer;
-    private GraphPlotter gp;
+    private GraphHandler gp;
 
     // Start is called before the first frame update
     void Start()
@@ -49,10 +49,10 @@ public class BackgroundLines : MonoBehaviour
         canvasHeight = containerSize.y;
 
         //Access graph plotter
-        gp = graph.GetComponent<GraphPlotter>();
+        gp = graph.GetComponent<GraphHandler>();
         //Get graph's coordinates of corners
-        graphWidth   = gp.XValueToCoordinates(gp.coordsTopRight.x) - gp.XValueToCoordinates(gp.coordsBottomLeft.x);
-        graphHeight  = gp.YValueToCoordinates(gp.coordsTopRight.y) - gp.YValueToCoordinates(gp.coordsBottomLeft.y);
+        graphWidth   = gp.GetXCoordinate(gp.topRight.x) - gp.GetXCoordinate(gp.bottomLeft.x);
+        graphHeight  = gp.GetYCoordinate(gp.topRight.y) - gp.GetYCoordinate(gp.bottomLeft.y);
 
         //Log
         Debug.Log(canvasWidth);

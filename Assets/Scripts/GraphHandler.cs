@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AngouriMath;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 
 public class GraphHandler : MonoBehaviour
@@ -21,9 +22,10 @@ public class GraphHandler : MonoBehaviour
     private List<List<Vector3>> pointsList;
     private Func<float, float> theFunction;
     private Vector2 coordinatesBottomLeft;
-    private static float SILLY_NUMBER = -100000f;
+    private static float SILLY_NUMBER = -100001f;
     private TextMeshProUGUI equationDisplayText;
     private TextMeshProUGUI errorText;
+    private bool readOnly;
     
     // Start is called before the first frame update
     private void Start()
@@ -33,49 +35,27 @@ public class GraphHandler : MonoBehaviour
         coordinatesBottomLeft = gameObject.transform.position;
         equationDisplayText = equationDisplay.GetComponent<TextMeshProUGUI>();
         errorText = errorDisplay.GetComponent<TextMeshProUGUI>();
-        
+        readOnly = false;
+
         UpdateGraph();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        // TODO: Take equation in input box and plot on graph
-        
-        bool modified = false;
-        
-        foreach (char c in Input.inputString)
-        {
-            switch (c)
-            {
-                case '\b': // Backspace
-                    if (equation.Length > 0)
-                    {
-                        equation = equation.Substring(0, equation.Length - 1);
-                        modified = true;
-                    }
-                    break;
-                case '\n': // Enter
-                case '\r': // Return
-                    break; // Ignore this keypress
-                default:
-                    equation += c;
-                    modified = true;
-                    break;
-            }
-        }
-        
-        // Control wipes the current input
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            equation = "";
-            modified = true;
-        }
-
-        if (modified)
-        {
-            UpdateGraph();
-        }
+    
+    }
+    
+    public List<List<Vector3>> RequestWaypoints() {
+        return pointsList;
+    }
+    
+    public bool IsReadOnly() {
+        return readOnly;
+    }
+    
+    public void MarkReadOnly() {
+        readOnly = true;
     }
 
     /**
@@ -84,7 +64,7 @@ public class GraphHandler : MonoBehaviour
      * - Destroys the old graph
      * - Plots a new one
      */
-    private void UpdateGraph()
+    public void UpdateGraph()
     {
         DisplayEquation();
         bool valid = true;

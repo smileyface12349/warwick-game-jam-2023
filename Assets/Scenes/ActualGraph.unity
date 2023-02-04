@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 1393993806}
   - component: {fileID: 1393993805}
   - component: {fileID: 1393993804}
+  - component: {fileID: 1393993807}
   m_Layer: 0
   m_Name: GraphContainer
   m_TagString: Untagged
@@ -771,6 +772,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1393993807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393993803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7199397c543cf446887cd38b1cbcfee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphContainer: {fileID: 0}
+  coordsBottomLeft: {x: 0, y: 0}
+  coordsTopRight: {x: 0, y: 0}
+  graphMin: {x: 0, y: 0}
+  graphMax: {x: 0, y: 0}
+  points: 100
 --- !u!1 &1541701426
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +849,7 @@ GameObject:
   - component: {fileID: 2112035558}
   - component: {fileID: 2112035560}
   - component: {fileID: 2112035559}
+  - component: {fileID: 2112035561}
   m_Layer: 0
   m_Name: GraphBackground
   m_TagString: Untagged
@@ -895,3 +915,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112035557}
   m_CullTransparentMesh: 1
+--- !u!114 &2112035561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112035557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56a9fe90c7416d3eb74958dcb82d497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1541701426}

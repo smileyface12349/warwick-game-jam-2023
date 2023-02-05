@@ -4,6 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// THIS FILE IS NOT CURRENTLY USED
+// DO NOT RELY ON ANYTHING IN THIS FILE
+
 public class ReadEquation : MonoBehaviour
 {
 

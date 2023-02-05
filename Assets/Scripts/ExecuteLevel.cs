@@ -104,7 +104,7 @@ public class ExecuteLevel : MonoBehaviour
         // Turbo speed
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            // I can't be bothered to do the fancy stuff for a hidden feature
+            // Note it is disabled by pressing ENTER, so no need for the extra variable
             train.GetComponent<FollowWaypoints>().TurboSpeed();
         }
         

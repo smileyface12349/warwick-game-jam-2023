@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using AngouriMath;
 
+// THIS FILE IS NOT CURRENTLY USED
+// DO NOT RELY ON ANYTHING IN THIS FILE
+
 public class GraphPlotter : MonoBehaviour
 {
 

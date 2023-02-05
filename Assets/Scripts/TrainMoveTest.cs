@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// THIS FILE IS NOT CURRENTLY USED
+// DO NOT RELY ON ANYTHING IN THIS FILE
+
 public class TrainMoveTest : MonoBehaviour
 {
     private Rigidbody2D rb;

@@ -68,7 +68,7 @@ public class FollowWaypoints : MonoBehaviour
             gameObject.transform.eulerAngles = new Vector3(0, 0, -Vector2.SignedAngle(directionVector, new Vector2(1, 0)));
 
             // Move towards the target
-            Debug.Log("Hello, I'm a train! I'm gonna try and move towards " + target);
+            // Debug.Log("Hello, I'm a train! I'm gonna try and move towards " + target);
             transform.position = Vector2.MoveTowards(transform.position, target, maxDistance);
             
             // Check if we've reached the target, and increment the point index if so
@@ -96,7 +96,12 @@ public class FollowWaypoints : MonoBehaviour
         }
     }
     
-    public Vector3 GetFrontOfTrain() {
+    public Vector3 GetFrontOfTrain()
+    {
+        // Replace this with the middle of the train
+        // Everything is now handled from the middle of the train, so this is not necessary
+        return gameObject.transform.position;
+        
         Debug.Log(directionVector);
         Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.rect.width/2);
         return gameObject.transform.position + directionVector * (width/2);

@@ -95,6 +95,18 @@ public class FollowWaypoints : MonoBehaviour
             speedSetting = 1;
         }
     }
+
+    public bool IsFast()
+    {
+        if (speedSetting == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     
     public Vector3 GetFrontOfTrain()
     {
@@ -102,8 +114,8 @@ public class FollowWaypoints : MonoBehaviour
         // Everything is now handled from the middle of the train, so this is not necessary
         return gameObject.transform.position;
         
-        Debug.Log(directionVector);
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.rect.width/2);
-        return gameObject.transform.position + directionVector * (width/2);
+        // Debug.Log(directionVector);
+        // Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.rect.width/2);
+        // return gameObject.transform.position + directionVector * (width/2);
     }
 }

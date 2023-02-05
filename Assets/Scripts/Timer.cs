@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
         elapsedTimeMS = currentTime - startTime;
         minutes = Math.Floor(elapsedTimeMS / 60000);
         seconds = Math.Floor((elapsedTimeMS - minutes * 60000) / 1000);
-        milliseconds = seconds % 1000;
+        milliseconds = elapsedTimeMS % 1000;
         text.text = minutes.ToString("0") + ":" + seconds.ToString("00") + "." + milliseconds.ToString("000"); // TODO: Better formatting needed here
     }
 }

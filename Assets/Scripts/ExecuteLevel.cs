@@ -101,6 +101,13 @@ public class ExecuteLevel : MonoBehaviour
             enterPressed = false;
         }
         
+        // Turbo speed
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            // I can't be bothered to do the fancy stuff for a hidden feature
+            train.GetComponent<FollowWaypoints>().TurboSpeed();
+        }
+        
         // Find the nearest graph (has to be nearby)
         GameObject graph = GetClosestGraph();
         

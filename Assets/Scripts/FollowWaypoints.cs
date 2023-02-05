@@ -9,7 +9,8 @@ public class FollowWaypoints : MonoBehaviour
     public int width = 128;
     public float slowSpeed;
     public float fastSpeed;
-    public bool isFast;
+    public float superFastSpeed;
+    public int speedSetting;
     
     private float speed;
     private int pointIndex;
@@ -19,7 +20,7 @@ public class FollowWaypoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isFast = true;
+        speedSetting = 1;
         executeLevel = levelController.GetComponent<ExecuteLevel>();
         pointIndex = 0;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
@@ -29,15 +30,24 @@ public class FollowWaypoints : MonoBehaviour
     void Update()
     {
         // Update speed
-        if (isFast) {
-            speed = fastSpeed;
-        } else {
-            speed = slowSpeed;
+        switch (speedSetting)
+        {
+            case 0:
+                speed = slowSpeed;
+                break;
+            case 1:
+                speed = fastSpeed;
+                break;
+            case 2:
+                speed = superFastSpeed;
+                break;
         }
-    
+
+
         // Check if we've run out of waypoints
         if (waypoints != null && pointIndex >= waypoints.Count) {
             // Ask for some more
+            pointIndex = 0;
             waypoints = executeLevel.RequestWaypoints();
             if (waypoints == null) {
                 // TODO: Insert cool blowing up / derailing animation here
@@ -69,9 +79,21 @@ public class FollowWaypoints : MonoBehaviour
         }
     }
 
+    public void TurboSpeed()
+    {
+        speedSetting = 2;
+    }
+
     public void ToggleSpeed()
     {
-        isFast = !isFast;
+        if (speedSetting == 1)
+        {
+            speedSetting = 0;
+        }
+        else
+        {
+            speedSetting = 1;
+        }
     }
     
     public Vector3 GetFrontOfTrain() {

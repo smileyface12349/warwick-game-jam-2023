@@ -25,6 +25,7 @@ public class ExecuteLevel : MonoBehaviour
     private int graphIndex;
     private Nullable<Vector2> graphEnd;
     private bool enterPressed;
+    private int points;
 
     // Start is called before the first frame update
     void Start()
@@ -190,6 +191,7 @@ public class ExecuteLevel : MonoBehaviour
             if (distance > DERAIL_THRESHOLD) {
                 return null;
             }
+            AddPoints(150); // Add another 150 points if exit correct (total: 250)
         }
         
         // Check if we need to follow a graph now
@@ -205,6 +207,12 @@ public class ExecuteLevel : MonoBehaviour
             } else {
                 waypointsOutput = GetGraphWaypoints(nextGraph);
                 nextGraph.GetComponent<GraphHandler>().MarkReadOnly();
+            }
+
+            // If the entrance to the graph is correct, +100 points!
+            if (waypointsOutput != null)
+            {
+                AddPoints(100);
             }
         }
         
@@ -252,5 +260,15 @@ public class ExecuteLevel : MonoBehaviour
         // All good - tell the train to follow these waypoints. We'll decide if it's okay at the end
         graphEnd = bestSegment[bestSegment.Count-1];
         return bestSegment;
+    }
+
+    public void AddPoints(int addPoints)
+    {
+        points += addPoints;
+    }
+
+    public int GetPoints()
+    {
+        return points;
     }
 }

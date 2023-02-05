@@ -32,23 +32,23 @@ public class ExecuteLevel : MonoBehaviour
         // I have done this because it allows easy editing of waypoints in the unity editor.
         // Yes, it looks stupid. It makes it easier to edit the levels.
         waypoints = new List<List<Vector3>>();
-        if (waypoints1 != null) {
+        if (waypoints1.Count > 0) {
             waypoints.Add(waypoints1);
             waypoints.Add(GRAPH_REFERENCE);
         }
-        if (waypoints2 != null) {
+        if (waypoints2.Count > 0) {
             waypoints.Add(waypoints2);
             waypoints.Add(GRAPH_REFERENCE);
         }
-        if (waypoints3 != null) {
+        if (waypoints3.Count > 0) {
             waypoints.Add(waypoints3);
             waypoints.Add(GRAPH_REFERENCE);
         }
-        if (waypoints4 != null) {
+        if (waypoints4.Count > 0) {
             waypoints.Add(waypoints4);
             waypoints.Add(GRAPH_REFERENCE);
         }
-        if (waypoints5 != null) {
+        if (waypoints5.Count > 0) {
             waypoints.Add(waypoints5);
             waypoints.Add(GRAPH_REFERENCE);
         }

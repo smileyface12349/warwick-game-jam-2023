@@ -7,9 +7,9 @@ public class FollowWaypoints : MonoBehaviour
     public List<Vector3> waypoints;
     public GameObject levelController;
     public int width = 128;
-    public float typicalSpeed;
-    public float textSpeed;
-    public float textThresholdX;
+    public float slowSpeed;
+    public float fastSpeed;
+    public bool isFast;
     
     private float speed;
     private int pointIndex;
@@ -19,7 +19,7 @@ public class FollowWaypoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = textSpeed;
+        isFast = true;
         executeLevel = levelController.GetComponent<ExecuteLevel>();
         pointIndex = 0;
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -10);
@@ -29,10 +29,10 @@ public class FollowWaypoints : MonoBehaviour
     void Update()
     {
         // Update speed
-        if (gameObject.transform.position.x <= textThresholdX) {
-            speed = textSpeed;
+        if (isFast) {
+            speed = fastSpeed;
         } else {
-            speed = typicalSpeed;
+            speed = slowSpeed;
         }
     
         // Check if we've run out of waypoints
@@ -67,6 +67,11 @@ public class FollowWaypoints : MonoBehaviour
             }
         
         }
+    }
+
+    public void ToggleSpeed()
+    {
+        isFast = !isFast;
     }
     
     public Vector3 GetFrontOfTrain() {

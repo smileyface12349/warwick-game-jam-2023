@@ -24,6 +24,7 @@ public class ExecuteLevel : MonoBehaviour
     private int waypointIndex;
     private int graphIndex;
     private Nullable<Vector2> graphEnd;
+    private bool enterPressed;
 
     // Start is called before the first frame update
     void Start()
@@ -56,12 +57,13 @@ public class ExecuteLevel : MonoBehaviour
         // Initialise values
         waypointIndex = 0;
         graphEnd = null;
+        enterPressed = false;
     }
     
     private GameObject GetClosestGraph() {
-        GameObject closestGraph = graphs[0];
-        float distance = Vector2.Distance(closestGraph.transform.position, train.transform.position);
-        for (int i=1; i<graphs.Length; i++) {
+        GameObject closestGraph = null;
+        float distance = 999999999;
+        for (int i=0; i<graphs.Length; i++) {
             GameObject graph = graphs[i];
             GraphHandler handler = graph.GetComponent<GraphHandler>();
             if (handler.IsReadOnly()) {
@@ -84,8 +86,25 @@ public class ExecuteLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // Enter toggles speed
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!enterPressed)
+            {
+                train.GetComponent<FollowWaypoints>().ToggleSpeed();
+            }
+            enterPressed = true;
+        }
+        else
+        {
+            enterPressed = false;
+        }
+        
+        // Find the nearest graph (has to be nearby)
         GameObject graph = GetClosestGraph();
         
+        // Update it with whatever the user types
         if (graph != null) {
             GraphHandler handler = graph.GetComponent<GraphHandler>();
             bool modified = false;
@@ -102,13 +121,17 @@ public class ExecuteLevel : MonoBehaviour
                         break;
                     case '\n': // Enter
                     case '\r': // Return
-                        break; // Ignore this keypress
+                        // Handled elsewhere
+                        // This condition ensures if the key is held, it only triggers once
+                        break;
                     default:
                         handler.equation += c;
                         modified = true;
                         break;
                 }
             }
+
+            
         
             // Control wipes the current input
             if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -117,6 +140,7 @@ public class ExecuteLevel : MonoBehaviour
                 modified = true;
             }
 
+            // Update the graph
             if (modified)
             {
                 handler.UpdateGraph();
@@ -173,6 +197,7 @@ public class ExecuteLevel : MonoBehaviour
                 return null;
             } else {
                 waypointsOutput = GetGraphWaypoints(nextGraph);
+                nextGraph.GetComponent<GraphHandler>().MarkReadOnly();
             }
         }
         

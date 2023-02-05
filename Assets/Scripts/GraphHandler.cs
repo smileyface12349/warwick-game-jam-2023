@@ -249,7 +249,7 @@ public class GraphHandler : MonoBehaviour
             l.startWidth = 50f;
             l.endWidth = 50f;
             l.useWorldSpace = true;
-            l.startColor = new Color(1, 0, 0);
+            l.startColor = new Color(1, 1, 1);
             l.endColor = l.startColor;
             l.material = trackMaterial;
             l.textureMode = LineTextureMode.Tile;

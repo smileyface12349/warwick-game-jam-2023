@@ -286,4 +286,9 @@ public class ExecuteLevel : MonoBehaviour
     {
         return isCompleted;
     }
+
+    public void Fail()
+    {
+        train.GetComponent<FollowWaypoints>().Fail();
+    }
 }

@@ -1481,7 +1481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: x+4
+      value: x
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086414150379, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_Pivot.x
@@ -1566,6 +1566,10 @@ PrefabInstance:
     - target: {fileID: 1137894086414150379, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137894086638109308, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8602702441169607187, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_Name
@@ -1861,7 +1865,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: cos(x)+1
+      value: cos(x)
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: topRight.x
@@ -2403,7 +2407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: e^x * sin(x) * 5
+      value: e^x * sin(x)
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: topRight.x
@@ -2883,7 +2887,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: log(-x)+1
+      value: log(x)
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086414150379, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_Pivot.x

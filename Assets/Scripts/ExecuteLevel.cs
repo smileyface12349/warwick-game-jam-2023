@@ -26,6 +26,7 @@ public class ExecuteLevel : MonoBehaviour
     private Nullable<Vector2> graphEnd;
     private bool enterPressed;
     private int points;
+    private bool isCompleted;
 
     // Start is called before the first frame update
     void Start()
@@ -163,6 +164,7 @@ public class ExecuteLevel : MonoBehaviour
     public void CompleteLevel() {
         // TODO
         Debug.Log("You did it! Congratulations!");
+        isCompleted = true;
     }
     
     /**
@@ -233,7 +235,6 @@ public class ExecuteLevel : MonoBehaviour
         
         // Ensure the graph is actually valid, otherwise derail instantly
         if (segments == null || segments.Count == 0) {
-            Debug.Log("Invalid graph! Derailing...");
             return null;
         }
         
@@ -270,5 +271,10 @@ public class ExecuteLevel : MonoBehaviour
     public int GetPoints()
     {
         return points;
+    }
+
+    public bool IsCompleted()
+    {
+        return isCompleted;
     }
 }

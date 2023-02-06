@@ -50,9 +50,10 @@ public class FollowWaypoints : MonoBehaviour
             pointIndex = 0;
             waypoints = executeLevel.RequestWaypoints();
             if (waypoints == null) {
-                // TODO: Insert cool blowing up / derailing animation here
-                Debug.Log("Insert cool explosion / derailing animation here");
-                // Destroy(gameObject); // NOTE: This destroys the camera along with it
+                if (!executeLevel.IsCompleted())
+                {
+                    Fail();
+                }
             }
         }
         
@@ -77,6 +78,23 @@ public class FollowWaypoints : MonoBehaviour
             }
         
         }
+    }
+
+    private void Fail()
+    {
+        PauseTimer();
+        Explode();
+        // TODO: Display appropriate UI
+    }
+
+    private void Explode()
+    {
+        // TODO: THIS IS WHERE THE COOL EXPLOSION ANIMATION GOES
+    }
+
+    private void PauseTimer()
+    {
+        // TODO: This should pause the timer onscreen as it's slightly weird that it keeps going after the level is done
     }
 
     public void TurboSpeed()

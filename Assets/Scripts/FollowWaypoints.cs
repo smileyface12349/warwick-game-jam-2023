@@ -83,19 +83,12 @@ public class FollowWaypoints : MonoBehaviour
 
     private void Fail()
     {
-        PauseTimer();
-        Explode();
         failCanvas.GetComponent<FailLevel>().Derail();
     }
 
     private void Explode()
     {
         // TODO: THIS IS WHERE THE COOL EXPLOSION ANIMATION GOES
-    }
-
-    private void PauseTimer()
-    {
-        // TODO: This should pause the timer onscreen as it's slightly weird that it keeps going after the level is done
     }
 
     public void TurboSpeed()

@@ -10,7 +10,8 @@ public class ExecuteLevel : MonoBehaviour
     
     public float DERAIL_THRESHOLD = 100;
     public float GRAPH_INPUT_DISTANCE = 1000;
-    
+
+    public int totalFrogs;
     public GameObject successCanvas;
     public GameObject train;
     public GameObject[] graphs;
@@ -26,6 +27,7 @@ public class ExecuteLevel : MonoBehaviour
     private int graphIndex;
     private Nullable<Vector2> graphEnd;
     private bool enterPressed;
+    private int collectedFrogs;
     private int points;
     private bool isCompleted;
 
@@ -164,7 +166,7 @@ public class ExecuteLevel : MonoBehaviour
      */
     public void CompleteLevel() {
         // TODO: Pause the timer here
-        successCanvas.GetComponent<CompleteLevel>().Complete();
+        successCanvas.GetComponent<CompleteLevel>().Complete(points, collectedFrogs, totalFrogs, graphs.Length);
         isCompleted = true;
     }
     
@@ -263,7 +265,13 @@ public class ExecuteLevel : MonoBehaviour
         graphEnd = bestSegment[bestSegment.Count-1];
         return bestSegment;
     }
-
+    
+    public void CollectFrog()
+    {
+        collectedFrogs += 1;
+        AddPoints(1000);
+    }
+    
     public void AddPoints(int addPoints)
     {
         points += addPoints;

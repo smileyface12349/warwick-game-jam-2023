@@ -5329,6 +5329,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11546c74168bbe5428511aca5dcd0395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphText: {fileID: 739798416}
+  timeText: {fileID: 720614350}
+  frogText: {fileID: 1182298430}
+  graphPoints: {fileID: 1018461836}
+  timePoints: {fileID: 286244114}
+  frogPoints: {fileID: 1427633070}
+  score: {fileID: 2046634034}
+  timer: {fileID: 1375642765}
+  expectedTimeInSeconds: 99
 --- !u!1 &1128316411
 GameObject:
   m_ObjectHideFlags: 0
@@ -8175,6 +8184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DERAIL_THRESHOLD: 10
   GRAPH_INPUT_DISTANCE: 1000
+  totalFrogs: 0
   successCanvas: {fileID: 1101895528}
   train: {fileID: 694967527}
   graphs:

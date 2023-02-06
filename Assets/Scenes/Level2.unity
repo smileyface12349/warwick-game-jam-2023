@@ -1129,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: -arctan(x)-1.25
+      value: tan(x)
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: topRight.x
@@ -1985,7 +1985,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: e^(x/2)
+      value: x/2
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: topRight.y
@@ -4300,7 +4300,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137894086272449939, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: equation
-      value: -1/x
+      value: 1/x
       objectReference: {fileID: 0}
     - target: {fileID: 1137894086414150379, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
       propertyPath: m_Pivot.x

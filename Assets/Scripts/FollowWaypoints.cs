@@ -11,6 +11,7 @@ public class FollowWaypoints : MonoBehaviour
     public float fastSpeed;
     public float superFastSpeed;
     public int speedSetting;
+    public GameObject failCanvas;
     
     private float speed;
     private int pointIndex;
@@ -84,7 +85,7 @@ public class FollowWaypoints : MonoBehaviour
     {
         PauseTimer();
         Explode();
-        // TODO: Display appropriate UI
+        failCanvas.GetComponent<FailLevel>().Derail();
     }
 
     private void Explode()

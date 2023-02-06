@@ -16,4 +16,15 @@ public class CompleteLevel : MonoBehaviour
     {
         
     }
+
+    public void Complete()
+    {
+        Debug.Log("You did it! Congratulations!");
+        gameObject.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void NextLevel()
+    {
+        // TODO: Load the next level
+    }
 }

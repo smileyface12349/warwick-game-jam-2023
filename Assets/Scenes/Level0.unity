@@ -1995,7 +1995,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 327689265}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1606618152}
+        m_TargetAssemblyTypeName: FailLevel, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &327689265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3219,6 +3231,7 @@ MonoBehaviour:
   fastSpeed: 125
   superFastSpeed: 1000
   speedSetting: 0
+  failCanvas: {fileID: 1606618147}
 --- !u!111 &694967535
 Animation:
   m_ObjectHideFlags: 0
@@ -8007,7 +8020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1915673671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1101895533}
+        m_TargetAssemblyTypeName: CompleteLevel, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1915673671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8150,6 +8175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DERAIL_THRESHOLD: 10
   GRAPH_INPUT_DISTANCE: 1000
+  successCanvas: {fileID: 1101895528}
   train: {fileID: 694967527}
   graphs:
   - {fileID: 698405270}
@@ -8465,7 +8491,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2031540025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1606618152}
+        m_TargetAssemblyTypeName: FailLevel, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2031540025
 MonoBehaviour:
   m_ObjectHideFlags: 0

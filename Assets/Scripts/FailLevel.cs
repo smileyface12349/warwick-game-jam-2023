@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FailLevel : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        // Haven't done this yet - hide it for now
         gameObject.GetComponent<Canvas>().enabled = false;
     }
 
@@ -19,6 +19,11 @@ public class FailLevel : MonoBehaviour
     
     public void Derail()
     {
-        
+        gameObject.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

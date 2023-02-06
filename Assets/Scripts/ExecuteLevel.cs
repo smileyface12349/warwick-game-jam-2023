@@ -11,6 +11,7 @@ public class ExecuteLevel : MonoBehaviour
     public float DERAIL_THRESHOLD = 100;
     public float GRAPH_INPUT_DISTANCE = 1000;
     
+    public GameObject successCanvas;
     public GameObject train;
     public GameObject[] graphs;
     public List<Vector3> waypoints1;
@@ -162,8 +163,8 @@ public class ExecuteLevel : MonoBehaviour
      * Complete the level!
      */
     public void CompleteLevel() {
-        // TODO
-        Debug.Log("You did it! Congratulations!");
+        // TODO: Pause the timer here
+        successCanvas.GetComponent<CompleteLevel>().Complete();
         isCompleted = true;
     }
     

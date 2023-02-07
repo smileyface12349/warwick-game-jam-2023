@@ -18,10 +18,12 @@ public class FollowWaypoints : MonoBehaviour
     private int pointIndex;
     private ExecuteLevel executeLevel;
     private Vector3 directionVector;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         speedSetting = 1;
         executeLevel = levelController.GetComponent<ExecuteLevel>();
         pointIndex = 0;
@@ -84,6 +86,7 @@ public class FollowWaypoints : MonoBehaviour
 
     public void Fail()
     {
+        source.Play();
         failCanvas.GetComponent<FailLevel>().Derail();
     }
 

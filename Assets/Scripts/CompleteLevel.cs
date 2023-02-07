@@ -18,12 +18,15 @@ public class CompleteLevel : MonoBehaviour
     public GameObject timer;
     public String nextLevel;
     public int expectedTimeInSeconds;
+
+    private AudioSource source;
     
     // Start is called before the first frame update
     void Start()
     {
         // Haven't done this yet - hide it for now
         gameObject.GetComponent<Canvas>().enabled = false;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -60,6 +63,9 @@ public class CompleteLevel : MonoBehaviour
         // Score
         score.GetComponent<TextMeshProUGUI>().text = "Score: " + points;
         
+        // Sound
+        source.Play();
+
     }
 
     public int CalculateTimeBonus(double timeInMs)

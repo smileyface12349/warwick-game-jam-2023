@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExecuteLevel : MonoBehaviour
@@ -30,6 +31,7 @@ public class ExecuteLevel : MonoBehaviour
     private int collectedFrogs;
     private int points;
     private bool isCompleted;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +65,7 @@ public class ExecuteLevel : MonoBehaviour
         waypointIndex = 0;
         graphEnd = null;
         enterPressed = false;
+        source = GetComponent<AudioSource>();
     }
     
     private GameObject GetClosestGraph() {
@@ -226,6 +229,15 @@ public class ExecuteLevel : MonoBehaviour
             // If the entrance to the graph is correct, +100 points!
             if (waypointsOutput != null)
             {
+                try
+                {
+                    graphs[0].GetComponent<AudioSource>().Play();
+                }
+                catch (Exception e)
+                {
+                    // it's not that important anyway
+                }
+
                 AddPoints(100);
             }
         }
@@ -277,8 +289,10 @@ public class ExecuteLevel : MonoBehaviour
     
     public void CollectFrog()
     {
+        
         collectedFrogs += 1;
         AddPoints(1000);
+        source.Play();
     }
     
     public void AddPoints(int addPoints)

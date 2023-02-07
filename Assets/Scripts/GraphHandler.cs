@@ -221,13 +221,10 @@ public class GraphHandler : MonoBehaviour
 
     private void DestroyGraph()
     {
-        int MAX = 1000;
-        int c = 0;
         Transform transform = gameObject.transform;
-        while (transform.childCount > 0 && c < MAX)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            Destroy(transform.GetChild(0).gameObject);
-            c++;
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 

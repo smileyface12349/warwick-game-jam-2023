@@ -1219,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Train
       objectReference: {fileID: 0}
+    - target: {fileID: 8323261716315539450, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.19
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5676273783889210049, guid: 013ac893025a909439133446b8c8782f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 013ac893025a909439133446b8c8782f, type: 3}

@@ -2749,7 +2749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3407767317337415879, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.658888
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3407767317337415879, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2796,8 +2796,12 @@ PrefabInstance:
       value: 299
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 3810
+      value: 3900
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[1].y
@@ -6106,6 +6110,10 @@ PrefabInstance:
     - target: {fileID: 7953192568901230964, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: m_Name
       value: Train
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323261716315539450, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5676273783889210049, guid: 013ac893025a909439133446b8c8782f, type: 3}

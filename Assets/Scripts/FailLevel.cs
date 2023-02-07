@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,13 @@ public class FailLevel : MonoBehaviour
     public GameObject timer;
     public GameObject train;
     public GameObject explosion;
+
+    private AudioSource source;
     
     // Start is called before the first frame update
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
         gameObject.GetComponent<Canvas>().enabled = false;
     }
 
@@ -35,6 +39,8 @@ public class FailLevel : MonoBehaviour
             // As important as the explosion is, if something goes wrong, let's just skip it
             EndLevel();
         }
+
+        source.Play();
     }
 
     public void EndLevel()

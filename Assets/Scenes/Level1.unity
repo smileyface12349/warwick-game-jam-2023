@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DERAIL_THRESHOLD: 11
   GRAPH_INPUT_DISTANCE: 1000
-  totalFrogs: 0
+  totalFrogs: 3
   successCanvas: {fileID: 1542209839}
   train: {fileID: 932643071}
   graphs:

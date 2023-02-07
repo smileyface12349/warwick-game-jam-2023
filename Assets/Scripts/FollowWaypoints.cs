@@ -81,7 +81,7 @@ public class FollowWaypoints : MonoBehaviour
         }
     }
 
-    private void Fail()
+    public void Fail()
     {
         failCanvas.GetComponent<FailLevel>().Derail();
     }

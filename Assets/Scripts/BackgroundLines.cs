@@ -74,6 +74,7 @@ public class BackgroundLines : MonoBehaviour
         else
         {
             offsetX = (1 - (gp.bottomLeft.x - (float) Math.Floor(gp.bottomLeft.x))) * spacingX;
+            canvasWidth -= 1; // a bad workaround for it drawing one extra line if total width is an integer
         }
 
         if (gp.bottomLeft.y == Math.Floor(gp.bottomLeft.y))
@@ -83,6 +84,7 @@ public class BackgroundLines : MonoBehaviour
         else
         {
             offsetY = (1 - (gp.bottomLeft.y - (float) Math.Floor(gp.bottomLeft.y))) * spacingY;
+            canvasHeight -= 1; // a bad workaround for it drawing one extra line if total width is an integer
         }
         
 

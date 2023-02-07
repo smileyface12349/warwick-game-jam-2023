@@ -22,16 +22,16 @@ public class Collisions : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log(col.gameObject.name);
-        if (col.gameObject.name == "Collectible")
+        if (col.gameObject.tag == "Collectible")
         {
             Destroy(col.gameObject);
             Script = LevelController.GetComponent<ExecuteLevel>();
             Script.CollectFrog();
         }
-        else if (col.gameObject.name == "Wall")
+        else if (col.gameObject.tag == "Wall")
         {
             Script = LevelController.GetComponent<ExecuteLevel>();
-            Script.Fail();
+            // Script.Fail();
         }
     }
 }

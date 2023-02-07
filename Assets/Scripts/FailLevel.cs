@@ -8,6 +8,8 @@ public class FailLevel : MonoBehaviour
 {
 
     public GameObject timer;
+    public GameObject train;
+    public GameObject explosion;
     
     // Start is called before the first frame update
     void Start()
@@ -24,15 +26,17 @@ public class FailLevel : MonoBehaviour
     public void Derail()
     {
         Explode();
-        // TODO: Wait for a second or so after exploding
-        gameObject.GetComponent<Canvas>().enabled = true;
-        timer.GetComponent<Timer>().StopTimer();
+        // Wait for a second or so after exploding
+        //gameObject.GetComponent<Canvas>().enabled = true;
+        //timer.GetComponent<Timer>().StopTimer();
         
     }
 
     public void Explode()
     {
-        // TODO: Here is where the super cool explosion animation goes
+        explosion = GameObject.Find("explosion-Sheet_0");
+        train = GameObject.Find("Train");
+        explosion.transform.position = train.transform.position;    
     }
 
     public void RestartLevel()

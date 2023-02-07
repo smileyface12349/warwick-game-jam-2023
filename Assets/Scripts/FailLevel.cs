@@ -27,8 +27,8 @@ public class FailLevel : MonoBehaviour
     {
         Explode();
         // Wait for a second or so after exploding
-        //gameObject.GetComponent<Canvas>().enabled = true;
-        //timer.GetComponent<Timer>().StopTimer();
+        gameObject.GetComponent<Canvas>().enabled = true;
+        timer.GetComponent<Timer>().StopTimer();
         
     }
 

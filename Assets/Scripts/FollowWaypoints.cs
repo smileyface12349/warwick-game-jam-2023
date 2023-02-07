@@ -12,7 +12,7 @@ public class FollowWaypoints : MonoBehaviour
     public float superFastSpeed;
     public int speedSetting;
     public GameObject failCanvas;
-    public GameObject explosion;
+    // public GameObject explosion;
     
     private float speed;
     private int pointIndex;
@@ -87,12 +87,12 @@ public class FollowWaypoints : MonoBehaviour
         failCanvas.GetComponent<FailLevel>().Derail();
     }
 
-    private void Explode()
-    {
-        explosion = GameObject.Find("explosion-Sheet_0");
-        explosion.transform.position = gameObject.transform.position;
-
-    }
+    // private void Explode()
+    // {
+    //     explosion = GameObject.Find("explosion-Sheet_0");
+    //     explosion.transform.position = gameObject.transform.position;
+    //
+    // }
 
     public void TurboSpeed()
     {

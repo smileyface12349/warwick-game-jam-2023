@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using AngouriMath;
 using TMPro;
-using Unity.Collections;
 using UnityEngine;
 
 public class GraphHandler : MonoBehaviour
@@ -126,7 +125,22 @@ public class GraphHandler : MonoBehaviour
             bool startNew = false;
             float newX = SILLY_NUMBER;
             float newY = SILLY_NUMBER;
-            float y = theFunction(x);
+            float y;
+            
+            // Try to determine the y-coordinate, but if function is undefined then skip this point
+            try
+            {
+                y = theFunction(x);
+                if (float.IsNaN(y))
+                {
+                    previousPoint = new Vector3(326435, 4924232); // Not the first point, but still out of bounds
+                    continue;
+                }
+            }
+            catch (Exception e)
+            {
+                continue;
+            }
             
             Debug.Log("Considering point (" + x + ", " + y + ")");
             
@@ -221,13 +235,10 @@ public class GraphHandler : MonoBehaviour
 
     private void DestroyGraph()
     {
-        int MAX = 1000;
-        int c = 0;
         Transform transform = gameObject.transform;
-        while (transform.childCount > 0 && c < MAX)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            Destroy(transform.GetChild(0).gameObject);
-            c++;
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 

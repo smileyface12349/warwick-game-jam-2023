@@ -91,6 +91,10 @@ public class ExecuteLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (train == null)
+        {
+            return;
+        }
         
         // Enter toggles speed
         if (Input.GetKeyDown(KeyCode.Return))

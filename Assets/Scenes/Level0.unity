@@ -1131,6 +1131,14 @@ PrefabInstance:
       propertyPath: levelController
       value: 
       objectReference: {fileID: 2020996426}
+    - target: {fileID: 5676273783676813580, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676273783820598670, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5676273783889210049, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: speed
       value: 100
@@ -1151,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1533394393, guid: a23459b2a048543b09dbda6de248cb4e, type: 3}
+    - target: {fileID: 5676273784634901726, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5810897239902471560, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 2.65
@@ -3176,7 +3188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: 575
+      value: 576
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[0].y
@@ -7998,11 +8010,11 @@ MonoBehaviour:
   - {fileID: 1235016396}
   - {fileID: 646630544}
   waypoints1:
-  - {x: -283, y: 1, z: 0}
-  - {x: 112, y: 1, z: 0}
-  - {x: 177, y: 1, z: 0}
+  - {x: -283, y: 0, z: 0}
+  - {x: 112, y: 0, z: 0}
+  - {x: 176, y: 0, z: 0}
   waypoints2:
-  - {x: 575, y: 0, z: 0}
+  - {x: 580, y: 0, z: 0}
   - {x: 2500, y: 0, z: 0}
   - {x: 2510, y: -2, z: 0}
   - {x: 2520, y: -4, z: 0}
@@ -8326,6 +8338,22 @@ PrefabInstance:
     - target: {fileID: 1015057382919864, guid: 9b2b63d170189594592cc856858167fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635845626775279147, guid: 9b2b63d170189594592cc856858167fe, type: 3}
+      propertyPath: m_text
+      value: 'Functions:  x  x^2  1/x  sin(x)  cos(x)  tan(x)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635845626775279147, guid: 9b2b63d170189594592cc856858167fe, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635845626775279147, guid: 9b2b63d170189594592cc856858167fe, type: 3}
+      propertyPath: m_margin.z
+      value: -475.7252
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635845626775279147, guid: 9b2b63d170189594592cc856858167fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6360626923765894802, guid: 9b2b63d170189594592cc856858167fe, type: 3}
       propertyPath: m_Name
@@ -8674,7 +8702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[3].x
-      value: 175
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 9188331673899856101, guid: ed0b375ef0a0de8469205518c1d0d608, type: 3}
       propertyPath: m_Positions.Array.data[3].z

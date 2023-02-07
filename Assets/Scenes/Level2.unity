@@ -1008,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1015057382919866, guid: 9b2b63d170189594592cc856858167fe, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2635845626775279147, guid: 9b2b63d170189594592cc856858167fe, type: 3}
       propertyPath: m_text
       value: 'New Functions:   e^x  arcsin(x)  arctan(x)  abs(x)'
@@ -9343,6 +9347,14 @@ PrefabInstance:
     - target: {fileID: 1910392331966314913, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910392331966314919, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910392331966314919, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}

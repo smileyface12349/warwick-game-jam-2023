@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Collisions : MonoBehaviour
 {
-    public  GameObject   LevelController;
-    private ExecuteLevel Script;
+    public  GameObject   levelController;
+    private ExecuteLevel script;
 
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //     
-    // }
+    void Start()
+    {
+        script = levelController.GetComponent<ExecuteLevel>();
+    }
 
     // Update is called once per frame
     // void Update()
@@ -19,19 +18,18 @@ public class Collisions : MonoBehaviour
     //     
     // }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.name);
-        if (col.gameObject.tag == "Collectible")
+        // Debug.Log(col.gameObject.name);
+        if (col.gameObject.CompareTag("Collectible"))
         {
+            Debug.Log("You picked up a collectible! Congratulations!");
             Destroy(col.gameObject);
-            Script = LevelController.GetComponent<ExecuteLevel>();
-            Script.CollectFrog();
+            script.CollectFrog();
         }
-        else if (col.gameObject.tag == "Wall")
+        if (col.gameObject.CompareTag("Wall"))
         {
-            Script = LevelController.GetComponent<ExecuteLevel>();
-            // Script.Fail();
+            script.Fail();
         }
     }
 }

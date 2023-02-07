@@ -1770,7 +1770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12002, y: 541}
+  m_AnchoredPosition: {x: 11977, y: 538}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504095440
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (You can press F1 to go really fast)
+  m_text: (Btw you can press F1 to go really fast)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c66c7f325a2da0404a798f1898f13648, type: 2}
   m_sharedMaterial: {fileID: 7800183825168930845, guid: c66c7f325a2da0404a798f1898f13648, type: 2}
@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -143.64648, w: 0}
+  m_margin: {x: 0, y: 0, z: -183.61719, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9251,6 +9251,10 @@ PrefabInstance:
     - target: {fileID: 1283163491064157889, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
       propertyPath: m_Name
       value: Success Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910392330842387012, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
+      propertyPath: m_text
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 1910392331966314912, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
       propertyPath: timer

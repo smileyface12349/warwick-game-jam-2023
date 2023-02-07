@@ -147,7 +147,12 @@ public class ExecuteLevel : MonoBehaviour
                 }
             }
 
-            
+            // Typing "y=" also wipes the input
+            if (handler.equation.EndsWith("y=") || handler.equation.EndsWith("y ="))
+            {
+                handler.equation = "";
+                modified = true;
+            }
         
             // Control wipes the current input
             if (Input.GetKeyDown(KeyCode.LeftControl))

@@ -2550,6 +2550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5331846258120822072, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: LevelController
+      value: 
+      objectReference: {fileID: 596934555}
     - target: {fileID: 5676273783676813583, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: m_Enabled
       value: 0

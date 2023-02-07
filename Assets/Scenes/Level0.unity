@@ -944,6 +944,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5331846258120822072, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: LevelController
+      value: 
+      objectReference: {fileID: 2020996426}
     - target: {fileID: 5676273783889210049, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: speed
       value: 100

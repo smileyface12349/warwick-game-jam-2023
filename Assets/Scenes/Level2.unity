@@ -3348,6 +3348,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4156776851227301917, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: LevelController
+      value: 
+      objectReference: {fileID: 1370117702}
+    - target: {fileID: 5331846258120822072, guid: 013ac893025a909439133446b8c8782f, type: 3}
+      propertyPath: LevelController
+      value: 
+      objectReference: {fileID: 1370117702}
     - target: {fileID: 6974322854189835904, guid: 013ac893025a909439133446b8c8782f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3398,6 +3406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5676273783889210049, guid: 013ac893025a909439133446b8c8782f, type: 3}
+    - {fileID: 4156776851227301917, guid: 013ac893025a909439133446b8c8782f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 013ac893025a909439133446b8c8782f, type: 3}
 --- !u!1 &1533435828
 GameObject:

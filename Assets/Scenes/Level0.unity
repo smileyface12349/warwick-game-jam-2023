@@ -8427,9 +8427,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1606618152}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FailLevel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976947330117785326, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3033251771948138460, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
       propertyPath: m_Name
       value: Fail Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457147634875891388, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -120.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457147635064328925, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_text
+      value: Game Over
       objectReference: {fileID: 0}
     - target: {fileID: 3457147635877598900, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
       propertyPath: m_Pivot.x
@@ -8519,6 +8555,16 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1375642765}
+    - target: {fileID: 3457147636169879644, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_text
+      value: 'You derailed!
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084025014128937454, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 115
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0218c94355bf4f4d9f0fe3f2e531d84, type: 3}
 --- !u!1001 &9188331674560524602

@@ -2458,6 +2458,7 @@ MonoBehaviour:
   superFastSpeed: 1000
   speedSetting: 0
   failCanvas: {fileID: 1606618147}
+  explosion: {fileID: 0}
 --- !u!111 &694967535
 Animation:
   m_ObjectHideFlags: 0
@@ -5791,6 +5792,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1375642765}
+    - target: {fileID: 1910392331966314912, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
+      propertyPath: nextLevel
+      value: Level1
+      objectReference: {fileID: 0}
     - target: {fileID: 1910392331966314913, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0

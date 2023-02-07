@@ -2642,6 +2642,7 @@ MonoBehaviour:
   superFastSpeed: 1000
   speedSetting: 1
   failCanvas: {fileID: 1575868194}
+  explosion: {fileID: 0}
 --- !u!1 &969022131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1137894086272449943, guid: a131eb0e448e6da4486234f6f47cdcd3, type: 3}
@@ -3315,6 +3316,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 2047252931}
+    - target: {fileID: 1910392331966314912, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
+      propertyPath: nextLevel
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 1910392331966314912, guid: af641f191f4316d4b8e21c1f58e9f8fe, type: 3}
       propertyPath: expectedTimeInSeconds
       value: 95

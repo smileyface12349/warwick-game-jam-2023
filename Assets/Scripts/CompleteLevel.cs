@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CompleteLevel : MonoBehaviour
     public GameObject frogPoints;
     public GameObject score;
     public GameObject timer;
+    public String nextLevel;
     public int expectedTimeInSeconds;
     
     // Start is called before the first frame update
@@ -62,6 +64,6 @@ public class CompleteLevel : MonoBehaviour
 
     public void NextLevel()
     {
-        // TODO: Load the next level
+        SceneManager.LoadScene(nextLevel);
     }
 }

@@ -53,13 +53,25 @@ public class CompleteLevel : MonoBehaviour
         double minutes = Math.Floor(timeInMs / 60000);
         double seconds = Math.Floor((timeInMs - minutes * 60000) / 1000);
         timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + minutes.ToString("0") + ":" + seconds.ToString("00");
-        double timeBonus = Math.Floor((expectedTimeInSeconds * 1000) / timeInMs * 5000);
-        points += (int) timeBonus;
+        int timeBonus = CalculateTimeBonus(timeInMs);
+        points += timeBonus;
         timePoints.GetComponent<TextMeshProUGUI>().text = "+" + timeBonus.ToString("0");
         
         // Score
         score.GetComponent<TextMeshProUGUI>().text = "Score: " + points;
         
+    }
+
+    public int CalculateTimeBonus(double timeInMs)
+    {
+        // int bonus = (int)Math.Floor((expectedTimeInSeconds * 1000) / timeInMs * 5000);
+        double expected = expectedTimeInSeconds * 1000;
+        if (timeInMs > 2 * expected)
+        {
+            return 0;
+        }
+        double delta = Math.Floor(expected - timeInMs);
+        return 5000 + (int) Math.Floor(delta / expected * 5000);
     }
 
     public void NextLevel()

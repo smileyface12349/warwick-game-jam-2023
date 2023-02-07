@@ -126,7 +126,22 @@ public class GraphHandler : MonoBehaviour
             bool startNew = false;
             float newX = SILLY_NUMBER;
             float newY = SILLY_NUMBER;
-            float y = theFunction(x);
+            float y;
+            
+            // Try to determine the y-coordinate, but if function is undefined then skip this point
+            try
+            {
+                y = theFunction(x);
+                if (float.IsNaN(y))
+                {
+                    previousPoint = new Vector3(326435, 4924232); // Not the first point, but still out of bounds
+                    continue;
+                }
+            }
+            catch (Exception e)
+            {
+                continue;
+            }
             
             Debug.Log("Considering point (" + x + ", " + y + ")");
             
